@@ -129,15 +129,59 @@ This strategy aims to reduce evening demand peaks while preserving sufficient ba
 
 The simulations show that coordinated EV charging can improve the integration of electric mobility into a local energy system.
 
+For the unidirectional smart-charging case, several combinations of `cap_factor` and `k_need` were evaluated.
+
+The selected configuration:
+
+- `cap_factor = 0.30`
+- `k_need = 0.80`
+
+provided the lowest load-smoothing indicator among the tested scenarios while maintaining sufficient vehicle charging.
+
 The smart charging strategy:
 
-- shifts charging toward periods of high photovoltaic production,
-- reduces additional evening demand,
-- improves alignment between EV charging and PV generation,
-- limits charging-related power peaks,
-- improves the smoothness of the grid demand profile.
+- shifted EV charging toward periods of high photovoltaic production,
+- reduced additional evening demand,
+- improved alignment between EV charging and PV generation,
+- limited charging-related power peaks,
+- improved the smoothness of the grid demand profile.
 
-The bidirectional V2G strategy further reduces peak demand by allowing connected EVs to discharge energy during high-load periods.
+For the bidirectional case, the model allowed connected EVs to discharge during high-demand periods while maintaining a minimum battery reserve.
+
+This V2G strategy reduced the effective grid demand during peak periods by using EV batteries as distributed flexibility resources.
+
+## Results Visualization
+
+### EV Demand and PV Generation
+
+![EV demand and PV generation](figures/01_ev_demand_and_pv_generation.png)
+
+Monte Carlo simulation was used to model EV charging demand for a fleet of 50 vehicles, while photovoltaic generation was simulated from solar irradiance and ambient temperature data.
+
+### Unidirectional Smart Charging
+
+![Unidirectional smart charging](figures/02_unidirectional_smart_charging.png)
+
+The charging strategy shifts EV demand toward periods of high photovoltaic production and limits additional stress on the electricity grid.
+
+### Bidirectional Vehicle-to-Grid
+
+![Bidirectional V2G peak shaving](figures/03_bidirectional_v2g_peak_shaving.png)
+
+The bidirectional strategy allows EVs to discharge during high-demand periods, contributing to peak shaving while maintaining a minimum battery state of charge.
+
+## My Contribution
+
+This project was developed in a two-person team.
+
+My contributions included:
+
+- modelling EV charging demand and photovoltaic generation,
+- implementing and testing smart charging strategies in Python,
+- analysing grid-load behaviour and charging scenarios,
+- evaluating load-smoothing performance,
+- contributing to the bidirectional V2G implementation and interpretation of results,
+- preparing technical analysis and project documentation.
 
 ## Repository Structure
 
@@ -156,6 +200,18 @@ smart-ev-charging-v2g-optimization/
 │   └── TP-V2G-Input_data.xlsx
 │
 ├── figures/
-│
+│   ├── 01_ev_demand_and_pv_generation.png
+│   ├── 02_unidirectional_smart_charging.png
+│   └── 03_bidirectional_v2g_peak_shaving.png
+|
 └── report/
     └── project_report.pdf
+
+## Project Context
+
+This project was developed as a two-person academic project at IMT Atlantique focused on demand-side management, electric mobility, photovoltaic integration and Vehicle-to-Grid strategies.
+
+## References
+
+- IMT Atlantique — Demand-side management and Vehicle-to-Grid modelling exercise
+- Enedis — *Pilotage de la recharge de véhicules électriques: opportunité pour le consom'acteur et le réseau public de distribution d'électricité* (2020)
